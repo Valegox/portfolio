@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { Silkscreen } from "next/font/google";
 
-const ServiceCard = ({ name, description }) => {
+const silkscreen = Silkscreen({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-silkscreen",
+});
+
+const SchoolProjectCard = ({ name, stack, description, url }) => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState();
 
@@ -13,8 +20,10 @@ const ServiceCard = ({ name, description }) => {
       className={`w-full p-2 mob:p-4 rounded-lg transition-all ease-out duration-300 ${
         mounted && theme === "dark" ? "hover:bg-slate-800" : "hover:bg-slate-50"
       } hover:scale-105 link`}
+      onClick={ () => window.open(url) }
     >
-      <h1 className="text-3xl">{name ? name : "Heading"}</h1>
+      <h1 className={"text-3xl " + silkscreen.className} >{name ? name : "Heading"}</h1>
+      <span className="mt-5 opacity-40 text-xl" style={{ fontStyle: 'italic' }}>{stack ? stack : 'Stack'}</span>
       <p className="mt-5 opacity-40 text-xl">
         {description
           ? description
@@ -24,4 +33,4 @@ const ServiceCard = ({ name, description }) => {
   );
 };
 
-export default ServiceCard;
+export default SchoolProjectCard;

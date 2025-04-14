@@ -5,17 +5,18 @@
 @import "./markdown.css";
 
 * {
-  font-family: "Hind";
+  /*font-family: "Hind";*/
 }
 
 body {
+  font-family: "Hind";
   @apply dark:bg-black dark:text-white;
 }
 
 .gradient-circle {
   position: absolute;
   pointer-events: none;
-  z-index: 100;
+  /*z-index: 100;*/
   top: -30px;
   height: 40px;
   width: 100vw;

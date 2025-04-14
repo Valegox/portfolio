@@ -3,19 +3,37 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
+import Socials from "../Socials";
 // Local Data
 import data from "../../data/portfolio.json";
 
-const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
+const Header = ({ handleScroll, isBlog }) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }
+  , []);
 
   return (
     <>
@@ -27,7 +45,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 onClick={() => router.push("/")}
                 className="font-medium p-2 laptop:p-0 link"
               >
-                {name}.
+                {name}
               </h1>
 
               <div className="flex items-center">
@@ -69,8 +87,8 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
-                  <Button onClick={handleWorkScroll}>Work</Button>
-                  <Button onClick={handleAboutScroll}>About</Button>
+                  <Button onClick={() => handleScroll('mobileApps')}>Work</Button>
+                  <Button onClick={() => handleScroll('about')}>About</Button>
                   {showBlog && (
                     <Button onClick={() => router.push("/blog")}>Blog</Button>
                   )}
@@ -118,78 +136,79 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           </>
         )}
       </Popover>
+      <div className={`mt-10 hidden sticky
+        dark:text-white top-0 z-10 tablet:flex
+        ${scrolled ? `backdrop-blur-md ${theme === "light" ? "bg-white/30": "bg-black/30"} border-white/20 border-b border-white/10 shadow-md` : ""}
+      `}>
+
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
-        } dark:text-white top-0 z-10 tablet:flex`}
+        className={`container mx-auto hidden flex-row items-center justify-between tablet:flex dark:text-white`}
       >
-        <h1
-          onClick={() => router.push("/")}
-          className="font-medium cursor-pointer mob:p-2 laptop:p-0"
-        >
-          {name}.
-        </h1>
-        {!isBlog ? (
-          <div className="flex">
-            <Button onClick={handleWorkScroll}>Work</Button>
-            <Button onClick={handleAboutScroll}>About</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
-
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
-            </Button>
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
-            )}
+          <div className="flex items-center">
+            <img
+              width={40}
+              src="https://avatars.githubusercontent.com/u/44845299?s=400&u=df344c41d7de353a9145eac48c0b22a2b99a6e01&v=4"
+              style={{marginRight: "10px", zIndex: 1000}}
+            ></img>
+            <h1
+              onClick={() => router.push("/")}
+              className="font-medium cursor-pointer mob:p-2 laptop:p-0"
+              style={{marginTop: "4px"}}
+            >
+              {name}
+            </h1>
           </div>
-        ) : (
-          <div className="flex">
-            <Button onClick={() => router.push("/")}>Home</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
+          {!isBlog ? (
+            <div className="flex items-center">
+              <Button onClick={() => handleScroll('mobileApps')}>Apps</Button>
+              <Button onClick={() => handleScroll('schoolProjects')}>Projets étudiants</Button>
+              {/* <Button onClick={() => handleScroll('music')}>Musique</Button>
+              <Button onClick={() => handleScroll('art')}>Dessin et 3D</Button> */}
+              <Button onClick={() => handleScroll('about')}>À propos de moi</Button>
+              <Socials />
+              {mounted && theme && data.darkMode && (
+                <Button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                  <img
+                    className="h-6"
+                    src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  ></img>
+                </Button>
+              )}
+            </div>
+          ) : (
+            <div className="flex">
+              <Button onClick={() => router.push("/")}>Home</Button>
+              {showBlog && (
+                <Button onClick={() => router.push("/blog")}>Blog</Button>
+              )}
+              {showResume && (
+                <Button
+                  onClick={() => router.push("/resume")}
+                  classes="first:ml-1"
+                >
+                  Resume
+                </Button>
+              )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
-            </Button>
-
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
+              <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+                Contact
               </Button>
-            )}
-          </div>
-        )}
+
+              {mounted && theme && data.darkMode && (
+                <Button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                  <img
+                    className="h-6"
+                    src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  ></img>
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
