@@ -84,24 +84,6 @@ export default function Home() {
                 cursor
               />
             </h1>
-            {/* <h1
-              ref={textTwo}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineTwo}
-            </h1> */}
-            {/* <h1
-              ref={textThree}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineThree}
-            </h1> */}
-            {/* <h1
-              ref={textFour}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineFour}
-            </h1> */}
           </div>
 
           
@@ -150,12 +132,6 @@ export default function Home() {
             {data.aboutpara}
           </p>
         </div>
-
-        {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={contactRef}>
-          <h1 className="text-2xl text-bold">Contact</h1>
-
-          <Socials className="mt-2 laptop:mt-5" />
-        </div> */}
 
         {/* This button should not go into production */}
         {process.env.NODE_ENV === "development" && (

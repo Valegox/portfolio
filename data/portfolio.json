@@ -50,42 +50,42 @@
       "title": "R-TYPE",
       "stack": "ECS en C++, SFML, réseau",
       "description": "Avec mon équipe, nous avons développé un moteur de jeu basé sur l'architecture ECS. En utilisant ce moteur, nous avons créé un jeu de tir 2D multijoueur inspiré du célèbre R-Type. À côté, j'ai aussi créé un Flappy Bird en utilisant notre ECS.",
-      "url": "https://apps.apple.com/us/app/jumpy/id1576368048"
+      "url": "https://github.com/UwUClub/R-Type"
     },
     {
       "id": "2",
       "title": "Zappy",
       "stack": "C++, réseau",
       "description": "Jeu multijoueur, le but est d'être la première équipe à atteindre le dernier niveau d'élévation en obtenant des ressources. Les joueurs sont algorithmes qui se connectent à notre serveur et disposent d'un champ de vision limité.",
-      "url": "https://apps.apple.com/by/app/ling/id1511413170"
+      "url": "https://github.com/UwUClub/Zappy"
     },
     {
       "id": "3",
       "title": "My_Teams",
       "stack": "C, réseau, RFC",
       "description": "Une reproduction du logiciel Teams en ligne de commandes accompagné d'un protocole documenté en RFC. On y retrouve authentification, création / gestion de channels, publications, commentaires, messagerie, etc.",
-      "url": "https://apps.apple.com/by/app/ling/id1511413170"
+      "url": "https://github.com/Valegox/Epitech-MyTeams"
     },
     {
       "id": "4",
       "title": "My_FTP",
       "stack": "C, réseau",
       "description": "Recréation d'un serveur FTP en C. On y retrouve les commandes d'authentification, de navigation et de gestion de fichiers (upload, téléchargement, suppression).",
-      "url": "https://apps.apple.com/by/app/ling/id1511413170"
+      "url": "https://github.com/Valegox/Epitech-MyFTP"
     },
     {
       "id": "5",
       "title": "Raytracer",
       "stack": "C++, SFML",
       "description": "Un programme de rendu d'images 3D appliquant le concept de raytracing. Un fichier de configuration permet de définir la scène (caméra, lumière, objets à afficher...).",
-      "url": "https://apps.apple.com/by/app/ling/id1511413170"
+      "url": "https://github.com/UwUClub/RAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAytracer"
     },
     {
       "id": "6",
       "title": "Tetris",
       "stack": "C, ncurses",
       "description": "Le célèbre jeu Tetris recréé pour y jouer sur un terminal.",
-      "url": "https://apps.apple.com/by/app/ling/id1511413170"
+      "url": "https://github.com/Valegox/Epitech-MyTetris"
     }
   ],
   "services": [
@@ -110,7 +110,7 @@
       "description": "We combine creative design and technical skills to build striking 3D visualisations that bring your project to life."
     }
   ],
-  "aboutpara": "",
+  "aboutpara": "À propos de moi",
   "aboutpara1": "Passionné d’informatique, j’ai commencé à programmer dès l’âge de 13 ans en créant des plugins pour mes serveurs Minecraft avec le langage Java. Cela fait maintenant 7 ans que je grandis avec cette passion.\nPendant le lycée et au fil de mes projets personnels, j’ai suivi tutoriels et formations en ligne pour créer des sites web et applications mobiles. Je maîtrise le framework React JS et j’ai développé des applications mobiles en React Native. J’ai aussi réalisé des jeux avec le moteur de jeu Unity.\nAprès l’obtention de mon bac, je me suis naturellement tourné vers Epitech pour leur pédagogie par projets. Actuellement, je suis en deuxième année de mon cursus de 5 ans à Epitech Toulouse. J’ai accomplis une multitude de projets d’équipe en C++ et en C, et j’ai diversifié mon bagage technique en découvrant le Haskell et l’assembleur.\nCar Epitech nous apprend à apprendre, je peux me former efficacement à n’importe quel langage / framework pour répondre à un besoin. Ça a été le cas durant mon stage de début de deuxième année au sein de l’agence toulousaine FrenchApp&Web, où je me suis adapté avec autonomie pour contribuer au développement des produits de l’entreprise. J’ai eu l’occasion de d’utiliser le framework Symfony en PHP ainsi que le CMS Drupal, tout en apportant mon expérience en React Native.",
   "resume": {
     "tagline": "👋  I'm a software engineer, product designer, and maker.",
