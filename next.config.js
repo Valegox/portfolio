@@ -1,4 +1,4 @@
-const repo = "portfolio"
+const isProd = process.env.NODE_ENV === 'production'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,9 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: `/${repo}`,
-  assetPrefix: `/${repo}/`,
-  trailingSlash: true,
+  basePath: isProd ? '/portfolio' : '',
 }
 
 module.exports = nextConfig
