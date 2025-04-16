@@ -1,6 +1,9 @@
 import React from "react";
+import config from "../../next.config";
 
 const WorkCard = ({ img, name, description, onClick }) => {
+  const basePath = config.basePath ? config.basePath : "";
+
   return (
     <div
       className="overflow-hidden rounded-lg p-2 laptop:p-4 first:ml-0 link"
@@ -10,11 +13,33 @@ const WorkCard = ({ img, name, description, onClick }) => {
         className="relative rounded-lg overflow-hidden transition-all ease-out duration-300 h-48 mob:h-auto"
         style={{ aspectRatio: 2 }}
       >
-        <img
-          alt={name}
-          className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
-          src={img}
-        ></img>
+        {
+          img.endsWith(".mp4") ? (
+            <>
+            <video
+              className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
+              id="vid"
+              autoplay
+              muted
+              loop
+            >
+              <source src={`${basePath}${img}`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+    
+            <script>
+              document.getElementById('vid').play();
+            </script>
+            </>
+          )
+          : 
+          <img
+            alt={name}
+            className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
+            src={`${basePath}${img}`}
+          ></img>
+      }
+      
       </div>
       <h1 className="mt-5 text-3xl font-medium">
         {name ? name : "Project Name"}
