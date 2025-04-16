@@ -19,17 +19,13 @@ const WorkCard = ({ img, name, description, onClick }) => {
             <video
               className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
               id="vid"
-              autoplay
+              autoPlay
               muted
               loop
             >
               <source src={`${basePath}${img}`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-    
-            <script>
-              document.getElementById('vid').play();
-            </script>
             </>
           )
           : 
