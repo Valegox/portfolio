@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import Socials from "../Socials";
+import config from "../../next.config";
+
 // Local Data
 import data from "../../data/portfolio.json";
 
@@ -14,6 +16,8 @@ const Header = ({ handleScroll, isBlog }) => {
   const [scrolled, setScrolled] = useState(false);
 
   const { name, showBlog, showResume } = data;
+
+  const basePath = config.basePath ? config.basePath : "";
 
   useEffect(() => {
     setMounted(true);
@@ -57,7 +61,7 @@ const Header = ({ handleScroll, isBlog }) => {
                   >
                     <img
                       className="h-6"
-                      src={`/images/${
+                      src={`${basePath}/images/${
                         theme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
                     ></img>
@@ -67,7 +71,7 @@ const Header = ({ handleScroll, isBlog }) => {
                 <Popover.Button>
                   <img
                     className="h-5"
-                    src={`/images/${
+                    src={`${basePath}/images/${
                       !open
                         ? theme === "dark"
                           ? "menu-white.svg"
@@ -172,7 +176,7 @@ const Header = ({ handleScroll, isBlog }) => {
                 >
                   <img
                     className="h-6"
-                    src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                    src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
                   ></img>
                 </Button>
               )}
@@ -202,7 +206,7 @@ const Header = ({ handleScroll, isBlog }) => {
                 >
                   <img
                     className="h-6"
-                    src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                    src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
                   ></img>
                 </Button>
               )}
