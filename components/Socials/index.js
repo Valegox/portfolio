@@ -1,30 +1,32 @@
 import React from "react";
 import Button from "../Button";
 
-import yourData from "../../data/portfolio.json";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
 const Socials = ({ className }) => {
-  const faClass = `text-2xl m-2 cursor-pointer`;
+
+  let faClass = `text-2xl m-2 cursor-pointer`;
+  const style = { padding: 0, margin: 0 };
+
   return (
-    <div className={`${className} flex flex-wrap mob:flex-nowrap link`} style={{marginLeft: '10px'}}>
-      <FaGithub
-        className={faClass}
-        onClick={() => window.open('https://github.com/Valegox')}
-      />
-      <FaLinkedin
-        className={faClass}
-        onClick={() => window.open('https://fr.linkedin.com/in/valentin-gegoux-722a501ab')}
-      />
-      <FaInstagram
-        className={faClass}
-        onClick={() => window.open('https://www.instagram.com/valentingegoux/')}
-      />
-      <HiOutlineMail
-        className={faClass}
-        onClick={() => window.open('mailto:valentin.gegoux@epitech.eu')}
-      />
+    <div className={`${className} flex flex-wrap mob:flex-nowrap link`}>
+      <Button onClick={() => window.open('https://github.com/Valegox')} style={style}>
+        <FaGithub className={faClass} />
+      </Button>
+
+      <Button onClick={() => window.open('https://fr.linkedin.com/in/valentin-gegoux-722a501ab')} style={style}>
+        <FaLinkedin className={faClass} />
+      </Button>
+
+      <Button onClick={() => window.open('https://www.instagram.com/valentingegoux/')} style={style}>
+        <FaInstagram className={faClass} />
+      </Button>
+
+      <Button onClick={() => window.open('mailto:valentin.gegoux@epitech.eu')} style={style}>
+        <HiOutlineMail className={faClass} />
+      </Button>
+      
       {/* {yourData.socials.map((social, index) => (
         <Button key={index} onClick={() => window.open(social.link)}>
           <span style={{fontSize: '2em', margin: '15px'}}>{social.title}</span>

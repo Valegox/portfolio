@@ -1,17 +1,9 @@
 import React from "react";
 import { useTheme } from "next-themes";
 import data from "../../data/portfolio.json";
-import { useEffect, useState } from "react";
 
-const Button = ({ children, type, onClick, classes }) => {
+const Button = ({ children, type, onClick, classes, style }) => {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
  
   if (type === "primary") {
     return (
@@ -32,6 +24,7 @@ const Button = ({ children, type, onClick, classes }) => {
     <button
       onClick={onClick}
       type="button"
+      style={style}
       className={`text-sm tablet:text-base p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 ${
         theme === "light"
           ? "hover:bg-black/10 text-black"

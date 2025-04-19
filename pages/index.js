@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "../components/Header";
 import SchoolProjectCard from "../components/SchoolProjectCard";
 import Socials from "../components/Socials";
@@ -31,6 +31,14 @@ export default function Home() {
   const textThree = useRef();
   const textFour = useRef();
 
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   const sections = {
     mobileApps: mobileAppsRef,
     schoolProjects: schoolProjectsRef,
@@ -39,20 +47,21 @@ export default function Home() {
 
   // Handling Scroll
   const handleScroll = (section) => {
+    const headerHeight = document.getElementById("header-desktop").offsetHeight;
     window.scrollTo({
-      top: sections[section].current.offsetTop,
+      top: sections[section].current.offsetTop - headerHeight,
       left: 0,
       behavior: "smooth",
     });
   };
 
-  useIsomorphicLayoutEffect(() => {
-    stagger(
-      [textOne.current, textTwo.current, textThree.current, textFour.current],
-      { y: 40, x: -10, transform: "scale(0.95) skew(10deg)" },
-      { y: 0, x: 0, transform: "scale(1)" }
-    );
-  }, []);
+  // useIsomorphicLayoutEffect(() => {
+  //   stagger(
+  //     [textOne.current, textTwo.current, textThree.current, textFour.current],
+  //     { y: 40, x: -10, transform: "scale(0.95) skew(10deg)" },
+  //     { y: 0, x: 0, transform: "scale(1)" }
+  //   );
+  // }, []);
 
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
@@ -72,7 +81,7 @@ export default function Home() {
 
         <div className="laptop:mt-20 mt-10">
 
-          <div className="mt-5">
+          {/* <div className="mt-5">
             <h1
               ref={textOne}
               className={"text-3xl tablet:text-6xl laptop:text-4xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5 " + playfairDisplay.className}
@@ -84,7 +93,7 @@ export default function Home() {
                 cursor
               />
             </h1>
-          </div>
+          </div> */}
 
           
         </div>
