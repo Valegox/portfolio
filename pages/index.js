@@ -11,6 +11,7 @@ import Button from "../components/Button";
 import Link from "next/link";
 import Cursor from "../components/Cursor";
 import { Playfair_Display } from "next/font/google";
+import { useTheme } from "next-themes";
 
 // Local Data
 import data from "../data/portfolio.json";
@@ -31,6 +32,7 @@ export default function Home() {
   const textThree = useRef();
   const textFour = useRef();
 
+  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
@@ -63,6 +65,15 @@ export default function Home() {
   //   );
   // }, []);
 
+  const renderTitle = (title) => {
+    return (
+      <div style={{display: 'inline-block'}}>
+        <h1 className="text-4xl text-bold" style={{paddingRight: '0px'}}>{title}</h1>
+        <hr className="divider" style={{borderColor: theme === 'dark' ? 'white' : 'black'}}></hr>
+      </div>
+    )
+  }
+
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
       {data.showCursor && <Cursor />}
@@ -70,7 +81,7 @@ export default function Home() {
         <title>{data.name}</title>
       </Head>
 
-      <div className="gradient-circle"></div>
+      {/* <div className="gradient-circle"></div> */}
       {/* <div className="gradient-circle-bottom"></div> */}
 
       <Header
@@ -99,7 +110,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={mobileAppsRef}>
-          <h1 className="text-2xl text-bold">Applications mobiles</h1>
+            {renderTitle("Mes apps")}
 
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
             {data.mobileApps.map((project) => (
@@ -116,7 +127,7 @@ export default function Home() {
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={schoolProjectsRef}>
 
-          <h1 className="text-2xl text-bold">Projets étudiants</h1>
+          {renderTitle("Projets étudiants")}
 
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
             {data.schoolProjects.map((schoolProject, index) => (
@@ -132,14 +143,28 @@ export default function Home() {
         </div>
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="text-2xl text-bold">À propos de moi</h1>
-
+          {renderTitle("À propos de moi")}
+          
           <p
-            className="tablet:m-10 mt-2 laptop:text-3xl w-full laptop:w-3/5"
-            style={{whiteSpace: 'pre-line', fontSize: '1rem'}}
+            className="tablet:m-10 mt-2 laptop:text-3xl w-full"
+            style={{lineHeight: 'normal', whiteSpace: 'pre-line', fontSize: '1.1rem', textAlign: 'justify', textJustify: 'inter-word'}}
           >
             {data.aboutpara}
           </p>
+
+          <div className="mt-5">
+            <h1
+              ref={textOne}
+              className={"text-3xl tablet:text-6xl laptop:text-4xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5 " + playfairDisplay.className}
+              style={{whiteSpace: 'pre-line', width: '70%', fontSize: '2rem'}} // Use the font variable here
+            >
+              <Typewriter
+                words={["“You can't connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.”\n\n- Steve Jobs"]}
+                typeSpeed={0}
+                cursor
+              />
+            </h1>
+          </div>
         </div>
 
         {/* This button should not go into production */}
