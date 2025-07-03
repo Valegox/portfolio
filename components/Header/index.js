@@ -50,7 +50,7 @@ const Header = ({ handleScroll, isBlog }) => {
                 <img
                   width={40}
                   src="https://avatars.githubusercontent.com/u/44845299?s=400&u=df344c41d7de353a9145eac48c0b22a2b99a6e01&v=4"
-                  style={{marginRight: "10px", zIndex: 1000}}
+                  style={{marginRight: "10px", zIndex: 1000, borderRadius: 20}}
                 ></img>
                 <h1
                   onClick={() => router.push("/")}
@@ -147,7 +147,7 @@ const Header = ({ handleScroll, isBlog }) => {
             <img
               width={40}
               src="https://avatars.githubusercontent.com/u/44845299?s=400&u=df344c41d7de353a9145eac48c0b22a2b99a6e01&v=4"
-              style={{marginRight: "10px", zIndex: 1000}}
+              style={{marginRight: "10px", zIndex: 1000, borderRadius: 20}}
             ></img>
             <h1
               className="font-medium mob:p-2 laptop:p-0"

@@ -109,7 +109,7 @@ export default function Home() {
           
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={mobileAppsRef}>
+        <div className="mt-10 laptop:mt-30 p-2" ref={mobileAppsRef}>
             {renderTitle("Mes apps")}
 
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
@@ -125,7 +125,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={schoolProjectsRef}>
+        <div className="mt-10 laptop:mt-30 p-2" ref={schoolProjectsRef}>
 
           {renderTitle("Projets étudiants")}
 
@@ -142,17 +142,17 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
+        <div className="mt-10 laptop:mt-30 p-2" ref={aboutRef}>
           {renderTitle("À propos de moi")}
           
           <p
-            className="tablet:m-10 mt-2 laptop:text-3xl w-full"
-            style={{lineHeight: 'normal', whiteSpace: 'pre-line', fontSize: '1.1rem', textAlign: 'justify', textJustify: 'inter-word'}}
+            className="tablet:m-10 mt-2 laptop:text-3xl"
+            style={{lineHeight: 'normal', whiteSpace: 'pre-line', fontSize: '1.1rem', textAlign: 'justify', textJustify: 'inter-word', textWrap: 'wrap'}}
           >
             {data.aboutpara}
           </p>
 
-          <div className="mt-5">
+          {/* <div className="mt-5">
             <h1
               ref={textOne}
               className={"text-3xl tablet:text-6xl laptop:text-4xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5 " + playfairDisplay.className}
@@ -164,7 +164,7 @@ export default function Home() {
                 cursor
               />
             </h1>
-          </div>
+          </div> */}
         </div>
 
         {/* This button should not go into production */}
