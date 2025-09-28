@@ -130,9 +130,9 @@ export default function Home() {
               <iframe
                 src="https://www.youtube.com/embed/3mrUXGXAdP0?si=SU6NZHgCtNwRPsQU"
                 title="YouTube video player"
-                frameborder="0"
+                //frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
+                //referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
                 style={{aspectRatio: 16 / 9 }}
               ></iframe>

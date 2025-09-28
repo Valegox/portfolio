@@ -107,7 +107,7 @@ const Header = ({ handleScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
-                  <Button onClick={() => handleScroll('elinasLegacy')}>Elina's Legacy</Button>
+                  <Button onClick={() => handleScroll('elinasLegacy')}>{"Elina's Legacy"}</Button>
                   <Button onClick={() => handleScroll('schoolProjects')}>Projets étudiants</Button>
                   <Button onClick={() => handleScroll('persoProjects')}>Projets perso</Button>
                   {/* <Button onClick={() => handleScroll('music')}>Musique</Button>
@@ -167,7 +167,7 @@ const Header = ({ handleScroll, isBlog }) => {
           </div>
           {!isBlog ? (
             <div className="flex items-center">
-              <Button onClick={() => handleScroll('elinasLegacy')}>Elina's Legacy</Button>
+              <Button onClick={() => handleScroll('elinasLegacy')}>{"Elina's Legacy"}</Button>
               <Button onClick={() => handleScroll('schoolProjects')}>Projets étudiants</Button>
               <Button onClick={() => handleScroll('persoProjects')}>Projets perso</Button>
               {/* <Button onClick={() => handleScroll('music')}>Musique</Button>
