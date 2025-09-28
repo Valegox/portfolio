@@ -1,4 +1,5 @@
 import { Popover } from "@headlessui/react";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -47,11 +48,12 @@ const Header = ({ handleScroll, isBlog }) => {
             <div className="flex items-center justify-between container mx-auto laptop:p-0">
 
               <div className="flex items-center">
-                <img
+                <Image
                   width={40}
+                  height={40}
                   src="https://avatars.githubusercontent.com/u/44845299?s=400&u=df344c41d7de353a9145eac48c0b22a2b99a6e01&v=4"
                   style={{marginRight: "10px", zIndex: 1000, borderRadius: 20}}
-                ></img>
+                />
                 <h1
                   onClick={() => router.push("/")}
                   className="font-medium"
@@ -64,21 +66,26 @@ const Header = ({ handleScroll, isBlog }) => {
               <div className="flex items-center">
                 {data.darkMode && (
                   <Button
+                    style={{ width: 32, height: 32 }}
                     onClick={() =>
                       setTheme(theme === "dark" ? "light" : "dark")
                     }
                   >
-                    <img
+                    <Image
+                      width={32}
+                      height={32}
                       className="h-6"
                       src={`${basePath}/images/${
                         theme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
-                    ></img>
+                    />
                   </Button>
                 )}
 
                 <Popover.Button>
-                  <img
+                  <Image
+                    width={20}
+                    height={20}
                     className="h-5"
                     src={`${basePath}/images/${
                       !open
@@ -89,7 +96,7 @@ const Header = ({ handleScroll, isBlog }) => {
                         ? "cancel.svg"
                         : "cancel-white.svg")
                     }`}
-                  ></img>
+                  />
                 </Popover.Button>
               </div>
             </div>
@@ -145,11 +152,12 @@ const Header = ({ handleScroll, isBlog }) => {
         className={`container mx-auto hidden flex-row items-center justify-between tablet:flex dark:text-white`}
       >
           <div className="flex items-center cursor-pointer" onClick={() => router.push("/")}>
-            <img
+            <Image
               width={40}
+              height={40}
               src="https://avatars.githubusercontent.com/u/44845299?s=400&u=df344c41d7de353a9145eac48c0b22a2b99a6e01&v=4"
               style={{marginRight: "10px", zIndex: 1000, borderRadius: 20}}
-            ></img>
+            />
             <h1
               className="font-medium mob:p-2 laptop:p-0"
               style={{marginTop: "4px"}}
@@ -170,10 +178,12 @@ const Header = ({ handleScroll, isBlog }) => {
                 <Button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
-                  <img
+                  <Image
+                    width={24}
+                    height={24}
                     className="h-6"
                     src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                  ></img>
+                  />
                 </Button>
               )}
             </div>
@@ -200,10 +210,12 @@ const Header = ({ handleScroll, isBlog }) => {
                 <Button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
-                  <img
+                  <Image
+                    width={24}
+                    height={24}
                     className="h-6"
                     src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                  ></img>
+                  />
                 </Button>
               )}
             </div>

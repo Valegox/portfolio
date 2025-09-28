@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 import config from "../../next.config";
 
 const WorkCard = ({ img, name, description, onClick }) => {
@@ -7,6 +7,7 @@ const WorkCard = ({ img, name, description, onClick }) => {
   return (
     <div
       className="overflow-hidden rounded-lg p-2 laptop:p-4 first:ml-0 link"
+      style={{ cursor: "pointer" }}
       onClick={onClick}
     >
       <div
@@ -29,11 +30,12 @@ const WorkCard = ({ img, name, description, onClick }) => {
             </>
           )
           : 
-          <img
+          <Image
             alt={name}
+            fill
             className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
             src={`${basePath}${img}`}
-          ></img>
+          />
       }
       
       </div>
