@@ -200,7 +200,7 @@ export default function Home() {
         <div className="mt-10 laptop:mt-30 p-2" ref={aboutRef}>
           {renderTitle("À propos de moi")}
           
-          <div style={{display: 'flex', flexDirection: 'row'}}>
+          <div style={{display: 'flex'}} className='desktop:flex-row flex-col'>
             <div
               className="tablet:m-10 mt-2 laptop:text-3xl opacity-40"
               style={{lineHeight: '1.5', whiteSpace: 'pre-line', fontSize: '1.1rem', textWrap: 'wrap' }}
