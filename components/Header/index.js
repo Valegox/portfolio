@@ -100,8 +100,9 @@ const Header = ({ handleScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
-                  <Button onClick={() => handleScroll('mobileApps')}>Mes apps</Button>
+                  <Button onClick={() => handleScroll('elinasLegacy')}>Elina's Legacy</Button>
                   <Button onClick={() => handleScroll('schoolProjects')}>Projets étudiants</Button>
+                  <Button onClick={() => handleScroll('persoProjects')}>Projets perso</Button>
                   {/* <Button onClick={() => handleScroll('music')}>Musique</Button>
                   <Button onClick={() => handleScroll('art')}>Dessin et 3D</Button> */}
                   <Button onClick={() => handleScroll('about')}>À propos de moi</Button>
@@ -158,8 +159,9 @@ const Header = ({ handleScroll, isBlog }) => {
           </div>
           {!isBlog ? (
             <div className="flex items-center">
-              <Button onClick={() => handleScroll('mobileApps')}>Mes apps</Button>
+              <Button onClick={() => handleScroll('elinasLegacy')}>Elina's Legacy</Button>
               <Button onClick={() => handleScroll('schoolProjects')}>Projets étudiants</Button>
+              <Button onClick={() => handleScroll('persoProjects')}>Projets perso</Button>
               {/* <Button onClick={() => handleScroll('music')}>Musique</Button>
               <Button onClick={() => handleScroll('art')}>Dessin et 3D</Button> */}
               <Button onClick={() => handleScroll('about')}>À propos de moi</Button>

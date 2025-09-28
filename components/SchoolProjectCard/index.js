@@ -24,7 +24,7 @@ const SchoolProjectCard = ({ name, stack, description, url }) => {
     >
       <h1 className={"text-3xl " + silkscreen.className} >{name ? name : "Heading"}</h1>
       <span className="mt-5 opacity-40 text-xl" style={{ fontStyle: 'italic' }}>{stack ? stack : 'Stack'}</span>
-      <p className="mt-5 opacity-40 text-xl">
+      <p className="mt-5 opacity-40 text-xl" style={{fontSize: '1.1rem'}}>
         {description
           ? description
           : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "}

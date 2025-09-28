@@ -1,10 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import Header from "../components/Header";
 import SchoolProjectCard from "../components/SchoolProjectCard";
-import Socials from "../components/Socials";
 import WorkCard from "../components/WorkCard";
-import { useIsomorphicLayoutEffect } from "../utils";
-import { stagger } from "../animations";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import Button from "../components/Button";
@@ -15,7 +12,6 @@ import { useTheme } from "next-themes";
 
 // Local Data
 import data from "../data/portfolio.json";
-import { Typewriter } from "nextjs-simple-typewriter";
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -24,7 +20,8 @@ const playfairDisplay = Playfair_Display({
 
 export default function Home() {
   // Ref
-  const mobileAppsRef = useRef();
+  const elinasLegacyRef = useRef();
+  const persoProjectsRef = useRef();
   const schoolProjectsRef = useRef();
   const aboutRef = useRef();
   const textOne = useRef();
@@ -42,7 +39,8 @@ export default function Home() {
   if (!mounted) return null;
 
   const sections = {
-    mobileApps: mobileAppsRef,
+    elinasLegacy: elinasLegacyRef,
+    persoProjects: persoProjectsRef,
     schoolProjects: schoolProjectsRef,
     about: aboutRef,
   }
@@ -56,6 +54,21 @@ export default function Home() {
       behavior: "smooth",
     });
   };
+
+  // split text by half at nearest \n
+  const splitHalf = (text) => {
+    const midpoint = Math.floor(text.length / 2);
+    let splitIndex = text.indexOf('\n', midpoint);
+    if (splitIndex === -1) {
+      splitIndex = text.indexOf(' ', midpoint);
+    }
+    if (splitIndex === -1) {
+      splitIndex = midpoint; // if no space found, split at midpoint
+    }
+    const firstHalf = text.slice(0, splitIndex).trim();
+    const secondHalf = text.slice(splitIndex).trim();
+    return [firstHalf, secondHalf];
+  }
 
   // useIsomorphicLayoutEffect(() => {
   //   stagger(
@@ -109,10 +122,35 @@ export default function Home() {
           
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2" ref={mobileAppsRef}>
-            {renderTitle("Mes apps")}
+        <div className="mt-10 laptop:mt-30 p-2" ref={elinasLegacyRef}>
+            {renderTitle("Projet de fin d'études - Elina's Legacy")}
 
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
+            <div className='mt-5 tablet:m-10'>
+
+              <iframe
+                src="https://www.youtube.com/embed/3mrUXGXAdP0?si=SU6NZHgCtNwRPsQU"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                style={{aspectRatio: 16 / 9 }}
+              ></iframe>
+
+              <div style={{display: 'flex', alignItems: 'center'}}>
+
+                <div
+                  className="tablet:m-10 mt-2 laptop:text-3xl opacity-40"
+                  style={{lineHeight: '1.5', whiteSpace: 'pre-line', fontSize: '1.1rem', textWrap: 'wrap', flex: 1 }}
+                >
+                  {data.elinasLegacyPara}
+                </div>
+              </div>
+
+            </div>
+            
+
+          {/* <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
             {data.mobileApps.map((project) => (
               <WorkCard
                 key={project.id}
@@ -122,7 +160,7 @@ export default function Home() {
                 onClick={() => window.open(project.url)}
               />
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-10 laptop:mt-30 p-2" ref={schoolProjectsRef}>
@@ -142,17 +180,43 @@ export default function Home() {
           </div>
         </div>
 
+
+        <div className="mt-10 laptop:mt-30 p-2" ref={persoProjectsRef}>
+            {renderTitle("Projets perso")}
+
+          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
+            {data.mobileApps.map((project) => (
+              <WorkCard
+                key={project.id}
+                img={project.imageSrc}
+                name={project.title}
+                description={project.description}
+                onClick={() => window.open(project.url)}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className="mt-10 laptop:mt-30 p-2" ref={aboutRef}>
           {renderTitle("À propos de moi")}
           
-          <p
-            className="tablet:m-10 mt-2 laptop:text-3xl"
-            style={{lineHeight: 'normal', whiteSpace: 'pre-line', fontSize: '1.1rem', textAlign: 'justify', textJustify: 'inter-word', textWrap: 'wrap'}}
-          >
-            {data.aboutpara}
-          </p>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div
+              className="tablet:m-10 mt-2 laptop:text-3xl opacity-40"
+              style={{lineHeight: '1.5', whiteSpace: 'pre-line', fontSize: '1.1rem', textWrap: 'wrap' }}
+            >
+              {splitHalf(data.aboutpara)[0]}
+            </div>
 
-          {/* <div className="mt-5">
+            <div
+              className="tablet:m-10 mt-2 laptop:text-3xl opacity-40"
+              style={{lineHeight: '1.5', whiteSpace: 'pre-line', fontSize: '1.1rem', textWrap: 'wrap' }}
+            >
+              {splitHalf(data.aboutpara)[1]}
+            </div>
+          </div>
+{/* 
+          <div className="mt-5">
             <h1
               ref={textOne}
               className={"text-3xl tablet:text-6xl laptop:text-4xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5 " + playfairDisplay.className}
